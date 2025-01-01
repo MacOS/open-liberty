@@ -55,25 +55,25 @@ public class Utils {
     }
 
     public static List<File> findJars(File repoDir) {
-        List<File> files = new ArrayList<>();
+        List<File> jarFiles = new ArrayList<>();
 
         File[] children = repoDir.listFiles();
-        if (children == null) return files;
+        if (children == null) return jarFiles;
 
         for (File child : children) {
             if (child.isDirectory()) {
-                files.addAll(findJars(child));
+                jarFiles.addAll(findJars(child));
             } else if (child.getName().endsWith(".jar")) {
                 try {
                     JarFile jar = new JarFile(child);
                     jar.close();
-                    files.add(child);
+                    jarFiles.add(child);
                 } catch (IOException e) {
                     // not a jar file
                 }
             }
         }
 
-        return files;
+        return jarFiles;
     }
 }
