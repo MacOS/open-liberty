@@ -60,14 +60,14 @@ public class Utils {
         File[] children = repoDir.listFiles();
         if (children == null) return files;
 
-        for (File f : children) {
-            if (f.isDirectory()) {
-                files.addAll(findJars(f));
-            } else if (f.getName().endsWith(".jar")) {
+        for (File child : children) {
+            if (child.isDirectory()) {
+                files.addAll(findJars(child));
+            } else if (child.getName().endsWith(".jar")) {
                 try {
-                    JarFile jar = new JarFile(f);
+                    JarFile jar = new JarFile(child);
                     jar.close();
-                    files.add(f);
+                    files.add(child);
                 } catch (IOException e) {
                     // not a jar file
                 }
