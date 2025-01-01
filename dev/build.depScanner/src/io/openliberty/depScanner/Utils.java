@@ -67,6 +67,7 @@ public class Utils {
                 try {
                     JarFile jar = new JarFile(child);
                     jar.close();
+
                     jarFiles.add(child);
                 } catch (IOException e) {
                     // not a jar file
