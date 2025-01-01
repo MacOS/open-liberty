@@ -56,9 +56,9 @@ public class Utils {
 
     public static List<File> findJars(File repoDir) {
         List<File> files = new ArrayList<>();
+
         File[] children = repoDir.listFiles();
         if (children == null) return files;
-
 
         for (File f : children) {
             if (f.isDirectory()) {
